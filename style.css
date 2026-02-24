@@ -1,139 +1,164 @@
-@font-face {
-    font-family: 'ONYSemimonoBeta';
-    src: url('fonts/ONYSemimonoBeta-Regular.efd5f52.otf') format('opentype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+:root {
+  --color-bg: #1a1a1a;
+  --color-panel: #fff;
+  --color-display-bg: #f8f8f8;
+  --color-display-border: #e0e0e0;
+  --color-display-text: #333;
+  --color-digit-bg: #f5f5f5;
+  --color-digit-hover: #e8e8e8;
+  --color-digit-active: #d0d0d0;
+  --color-operator-bg: #4a9eff;
+  --color-operator-hover: #3a8eef;
+  --color-operator-active: #2a7edf;
+  --color-equals-bg: #50c878;
+  --color-equals-hover: #40b868;
+  --color-equals-active: #30a858;
+  --color-clear-bg: #ff6b6b;
+  --color-clear-hover: #ee5a5a;
+  --color-clear-active: #dd4949;
+  --font-main: 'ONYSemimonoBeta', sans-serif;
+  --radius-panel: 15px;
+  --radius-btn: 8px;
+  --shadow-panel: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 @font-face {
-    font-family: 'ONYSemimonoBeta';
-    src: url('fonts/ONYSemimonoBeta-Black.d1984df.otf') format('opentype');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'ONYSemimonoBeta';
+  src: url('fonts/ONYSemimonoBeta-Regular.efd5f52.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'ONYSemimonoBeta', sans-serif;
+@font-face {
+  font-family: 'ONYSemimonoBeta';
+  src: url('fonts/ONYSemimonoBeta-Black.d1984df.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'ONYSemimonoBeta', sans-serif;
-    background: #1a1a1a;
-    min-height: 100vh;
-    position: relative;
+  font-family: var(--font-main);
+  background: var(--color-bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.kalkulyator {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    max-width: 320px;
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -250px;
-    margin-left: -160px;
-    text-align: left;
+.calculator {
+  background: var(--color-panel);
+  padding: 25px;
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-panel);
+  max-width: 320px;
+  width: 100%;
 }
 
-.ekran {
-    width: 100%;
-    height: 70px;
-    background: #f8f8f8;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    text-align: right;
-    line-height: 70px;
-    padding: 0 20px;
-    font-size: 28px;
-    font-weight: bold;
-    font-family: 'ONYSemimonoBeta', sans-serif;
-    margin-bottom: 20px;
-    color: #333;
+.calculator__display {
+  width: 100%;
+  min-height: 70px;
+  height: 70px;
+  background: var(--color-display-bg);
+  border: 2px solid var(--color-display-border);
+  border-radius: var(--radius-btn);
+  text-align: right;
+  line-height: 70px;
+  padding: 0 20px;
+  font-size: 28px;
+  font-weight: 700;
+  font-family: var(--font-main);
+  margin-bottom: 20px;
+  color: var(--color-display-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.knopki {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+.calculator__keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
 }
 
-.knopka {
-    height: 60px;
-    border: none;
-    border-radius: 8px;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: 'ONYSemimonoBeta', sans-serif;
-    cursor: pointer;
-    transition: all 0.2s;
+.btn {
+  height: 60px;
+  border: none;
+  border-radius: var(--radius-btn);
+  font-size: 20px;
+  font-weight: 700;
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
 }
 
-.knopka_cifra {
-    background: #f5f5f5;
-    color: #333;
+.btn--digit {
+  background: var(--color-digit-bg);
+  color: var(--color-display-text);
 }
 
-.knopka_cifra:hover {
-    background: #e8e8e8;
+.btn--digit:hover {
+  background: var(--color-digit-hover);
 }
 
-.knopka_cifra:active {
-    background: #d0d0d0;
-    transform: scale(0.95);
+.btn--digit:active {
+  background: var(--color-digit-active);
+  transform: scale(0.95);
 }
 
-.knopka_znak {
-    background: #4a9eff;
-    color: white;
+.btn--operator {
+  background: var(--color-operator-bg);
+  color: #fff;
 }
 
-.knopka_znak:hover {
-    background: #3a8eef;
+.btn--operator:hover {
+  background: var(--color-operator-hover);
 }
 
-.knopka_znak:active {
-    background: #2a7edf;
-    transform: scale(0.95);
+.btn--operator:active {
+  background: var(--color-operator-active);
+  transform: scale(0.95);
 }
 
-.knopka_ravno {
-    background: #50c878;
-    color: white;
-    grid-column: span 2;
+.btn--equals {
+  background: var(--color-equals-bg);
+  color: #fff;
+  grid-column: span 2;
 }
 
-.knopka_ravno:hover {
-    background: #40b868;
+.btn--equals:hover {
+  background: var(--color-equals-hover);
 }
 
-.knopka_ravno:active {
-    background: #30a858;
-    transform: scale(0.95);
+.btn--equals:active {
+  background: var(--color-equals-active);
+  transform: scale(0.95);
 }
 
-.knopka_ochistit {
-    background: #ff6b6b;
-    color: white;
-    grid-column: span 2;
+.btn--clear {
+  background: var(--color-clear-bg);
+  color: #fff;
+  grid-column: span 2;
 }
 
-.knopka_ochistit:hover {
-    background: #ee5a5a;
+.btn--clear:hover {
+  background: var(--color-clear-hover);
 }
 
-.knopka_ochistit:active {
-    background: #dd4949;
-    transform: scale(0.95);
+.btn--clear:active {
+  background: var(--color-clear-active);
+  transform: scale(0.95);
 }
 
-.knopka_nol {
-    grid-column: span 2;
+.btn--zero {
+  grid-column: span 2;
 }

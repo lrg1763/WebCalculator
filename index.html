@@ -1,41 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebCalculator</title>
     <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico">
+    <link rel="preload" href="fonts/ONYSemimonoBeta-Regular.efd5f52.otf" as="font" type="font/otf" crossorigin>
+    <link rel="preload" href="fonts/ONYSemimonoBeta-Black.d1984df.otf" as="font" type="font/otf" crossorigin>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="kalkulyator">
-        <div class="ekran" id="ekran">0</div>
-        
-        <div class="knopki">
-            <button class="knopka knopka_ochistit" id="knopka_ochistit">AC</button>
-            <button class="knopka knopka_ravno" id="knopka_ravno">=</button>
-            
-            <button class="knopka knopka_cifra" id="knopka_7">7</button>
-            <button class="knopka knopka_cifra" id="knopka_8">8</button>
-            <button class="knopka knopka_cifra" id="knopka_9">9</button>
-            <button class="knopka knopka_znak" id="knopka_delit">/</button>
-            
-            <button class="knopka knopka_cifra" id="knopka_4">4</button>
-            <button class="knopka knopka_cifra" id="knopka_5">5</button>
-            <button class="knopka knopka_cifra" id="knopka_6">6</button>
-            <button class="knopka knopka_znak" id="knopka_umnozhit">×</button>
-            
-            <button class="knopka knopka_cifra" id="knopka_1">1</button>
-            <button class="knopka knopka_cifra" id="knopka_2">2</button>
-            <button class="knopka knopka_cifra" id="knopka_3">3</button>
-            <button class="knopka knopka_znak" id="knopka_minus">−</button>
-            
-            <button class="knopka knopka_cifra knopka_nol" id="knopka_0">0</button>
-            <button class="knopka knopka_cifra" id="knopka_tochka">.</button>
-            <button class="knopka knopka_znak" id="knopka_plus">+</button>
+    <div class="calculator">
+        <div class="calculator__display" id="display" aria-live="polite">0</div>
+        <div class="calculator__keypad" id="keypad">
+            <button type="button" class="btn btn--clear" data-action="clear">AC</button>
+            <button type="button" class="btn btn--equals" data-action="equals">=</button>
+            <button type="button" class="btn btn--digit" data-digit="7">7</button>
+            <button type="button" class="btn btn--digit" data-digit="8">8</button>
+            <button type="button" class="btn btn--digit" data-digit="9">9</button>
+            <button type="button" class="btn btn--operator" data-action="operator" data-operator="/">/</button>
+            <button type="button" class="btn btn--digit" data-digit="4">4</button>
+            <button type="button" class="btn btn--digit" data-digit="5">5</button>
+            <button type="button" class="btn btn--digit" data-digit="6">6</button>
+            <button type="button" class="btn btn--operator" data-action="operator" data-operator="*">×</button>
+            <button type="button" class="btn btn--digit" data-digit="1">1</button>
+            <button type="button" class="btn btn--digit" data-digit="2">2</button>
+            <button type="button" class="btn btn--digit" data-digit="3">3</button>
+            <button type="button" class="btn btn--operator" data-action="operator" data-operator="-">−</button>
+            <button type="button" class="btn btn--digit btn--zero" data-digit="0">0</button>
+            <button type="button" class="btn btn--digit" data-action="decimal">.</button>
+            <button type="button" class="btn btn--operator" data-action="operator" data-operator="+">+</button>
         </div>
     </div>
-    
     <script src="script.js"></script>
 </body>
 </html>
